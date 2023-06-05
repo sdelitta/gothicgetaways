@@ -1,16 +1,10 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
- */
-
 import * as React from "react"
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useStaticQuery, graphql } from "gatsby"
-
 import { Link } from "gatsby";
 import * as styles from './layout.module.css';
 import "./layout.css"
+import logo from '../images/Logo copy.png';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,16 +18,47 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h1>Gothic Getaways</h1>
-        <nav>
-          <ul className={styles.nav}>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
-        </nav>
+    <div className={`${styles.container} full-width`}>
+      <header className={`${styles.header} full-width`}>
+        <Navbar className="full-width" collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <div className="logo">
+            <img src={logo} alt="Logo" />
+          </div>
+          <Link to="/">
+            <Navbar.Brand href="#home">Gothic Getaways</Navbar.Brand>
+          </Link>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <NavDropdown title="Type of Trip" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="#luxury">Deluxe</NavDropdown.Item>
+                <NavDropdown.Item href="#inexpensive">Inexpensive</NavDropdown.Item>
+                <NavDropdown.Item href="#group">Group</NavDropdown.Item>
+                {/* Add more dropdown items here */}
+              </NavDropdown>
+              <NavDropdown title="Destinations" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="#historical-haunts">Historical Haunts</NavDropdown.Item>
+                <NavDropdown.Item href="#cemeteries">Cemeteries</NavDropdown.Item>
+                <NavDropdown.Item href="#film-sites">Film Sites</NavDropdown.Item>
+                <NavDropdown.Item href="#haunted-attractions">Haunted Attractions</NavDropdown.Item>
+                <NavDropdown.Item href="#paranormal-accomodations">Paranormal Accomodations</NavDropdown.Item>
+                {/* Add more dropdown items here */}
+              </NavDropdown>
+              <NavDropdown title="Activities" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="#tours">Tours</NavDropdown.Item>
+                <NavDropdown.Item href="#Explore">Explore</NavDropdown.Item>
+                <NavDropdown.Item href="#shopping">Shopping</NavDropdown.Item>
+                <NavDropdown.Item href="#dining">Dining</NavDropdown.Item>
+                <NavDropdown.Item href="#haunted-attractions">Haunted Attractions</NavDropdown.Item>
+                {/* Add more dropdown items here */}
+              </NavDropdown>
+              {/* Add more Nav and NavDropdown components as needed */}
+            </Nav>
+            <Nav>
+              <li><Link to="/about">About</Link></li>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </header>
       <main>{children}</main>
       <footer className={styles.footer}>

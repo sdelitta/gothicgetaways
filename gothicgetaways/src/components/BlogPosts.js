@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import "../components/BlogPosts.css"
 
 const BlogPosts = () => {
   const [posts, setPosts] = useState(null);
@@ -29,11 +31,9 @@ const BlogPosts = () => {
         setError(error.message);
       });
   }, []);
-
   if (error) {
     return <div>Error: {error}</div>;
   }
-
   if (!posts || !assets) {
     return <div>Loading...</div>;
   }
@@ -45,12 +45,17 @@ const BlogPosts = () => {
         const asset = assets.find(asset => asset.sys.id === post.fields.featuredImage.sys.id);
         return (
           <div key={post.sys.id}>
-            <img
-              src={asset.fields.file.url} // use the asset URL here
-              alt={post.fields.title}
-            />
+            {console.log(post)}
+            <div className="post-image">
+              <img
+                src={asset.fields.file.url} // use the asset URL here
+                alt={post.fields.title}
+              />
+            </div>
             <h1>{post.fields.title}</h1>
             <p>{post.fields.shortDescription}</p>
+            <div></div>
+            <div>{documentToReactComponents(post.fields.content)}</div>
           </div>
         );
       })}
