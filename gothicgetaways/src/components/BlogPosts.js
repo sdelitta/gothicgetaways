@@ -39,12 +39,12 @@ const BlogPosts = () => {
   }
 
   return (
-    <div>
+    <div className="posts">
       {posts.map(post => {
         // find the associated asset for this post
         const asset = assets.find(asset => asset.sys.id === post.fields.featuredImage.sys.id);
         return (
-          <div key={post.sys.id}>
+          <div className="post" key={post.sys.id}>
             {console.log(post)}
             <div className="post-image">
               <img
@@ -52,10 +52,13 @@ const BlogPosts = () => {
                 alt={post.fields.title}
               />
             </div>
-            <h1>{post.fields.title}</h1>
-            <p>{post.fields.shortDescription}</p>
-            <div></div>
-            <div>{documentToReactComponents(post.fields.content)}</div>
+            <div className="post-title">
+              <h1>{post.fields.title}</h1>
+            </div>
+            <div className="post-description">
+              <p>{post.fields.shortDescription}</p>
+            </div>
+            {/* <div>{documentToReactComponents(post.fields.content)}</div> */}
           </div>
         );
       })}

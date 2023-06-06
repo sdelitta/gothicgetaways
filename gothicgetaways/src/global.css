@@ -4,3 +4,17 @@
     align-items: center;
     width: 100%;
   }  
+
+  body {
+    background-color: rgb(40, 39, 39);
+    font-family: "mr-darcy";
+    color: white;
+  }
+
+  header {
+    font-family: "mr-darcy";
+    color: white;
+  }
+
+  
+  

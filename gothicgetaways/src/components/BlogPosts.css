@@ -1,4 +1,27 @@
+.posts {
+    margin: 0 2% 0 2%;
+}
+
+.post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20%;
+    max-height: 500px;
+    border-top: 10px double rgb(43, 7, 69);
+    border-radius: 10px 10px 0 0;
+}
+
 .post-image {
-    width: 100px;
-    height: auto;
+    max-width: 100%;
+}
+
+.post-title h1 {
+    font-size: 1.4em;
+    /* margin-bottom: -.1%; */
+}
+
+.post-description {
+    margin: -40px 0 -10px 0;
 }

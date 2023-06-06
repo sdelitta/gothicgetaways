@@ -12,10 +12,10 @@ require('dotenv').config({
 })
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Gothic Getaways`,
+    description: `The #1 Travel Site for haunted hideaways, chilling tours, and other spine-tingling adventures`,
+    author: `@gothicgetaways`,
+    siteUrl: `https://gothicgetaways.com`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -31,8 +31,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Gothic Getaways`,
+        short_name: `Gothic Getaways`,
         start_url: `/`,
         background_color: `#663399`,
         // This will impact how browsers show your PWA/website
@@ -47,6 +47,19 @@ module.exports = {
       options: {
         spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        enableListener: true,
+        preconnect: [`https://use.typekit.net/tzo1sdl.css`],
+        web: [
+          {
+            name: `mr-darcy` + 'origins-smooth',
+            file: `https://use.typekit.net/tzo1sdl.css`,
+          },
+        ],
       },
     },
     `gatsby-transformer-remark`,
